@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Is there a limit to human longevity?</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Léo Belzile" />
+    <script src="libs/header-attrs-2.16/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <script src="libs/xaringanExtra-webcam-0.0.1/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+    <link rel="stylesheet" href="css/ath-slides.css" type="text/css" />
+    <link rel="stylesheet" href="css/ath-inferno-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+layout: false
+background-image: url("figures/logo_hec_montreal_blanc_web.png")
+background-size: 400px
+background-position: 5% 5%
+
+
+class: center middle main-title section-title-1
+
+# Is there a limit to human longevity?
+
+.class-info[
+
+**Department of Mathematics and Statistics, Dalhousie University**
+
+.light[Léo Belzile, HEC Montréal]
+&lt;br&gt;
+Based on joint work with Anthony Davison, Jutta Gampe, Holger Rootzén, Dmitrii Zholud
+]
+
+
+---
+
+layout: true
+class: title title-1
+
+---
+
+# Estimating human lifespan
+
+The study of human longevity is full of pitfalls for the unwarry...
+
+The problem raises several statistical problems revolving around
+
+.box-1.medium.sp-after-half[data quality]
+.box-2.medium.sp-after-half[models]
+.box-3.medium.sp-after-half[extrapolation]
+
+---
+
+# Glossary
+
+- .color-1[**Supercentenarian**]: person living beyond 110th birthday
+- .color-1[**Semi-supercentenarian**]: dies between 105th and 110th birthdays.
+- .color-1[**Lifetime**]: life-length of an individual.
+- .color-1[**Lifespan**]: upper limit (if any) on distribution of lifetimes.
+
+
+
+---
+
+# Why study longevity?
+
+
+Statistical analysis needed to assess biological theories about
+
+.box-inv-1.sp-after[natural selection]
+
+.box-inv-1.sp-after[mortality plateau]
+
+.box-inv-1.sp-after[existence of&lt;br&gt; finite lifespan]
+
+--
+
+.box-1.medium[Lots of interest in the news!]
+---
+
+# Exponential growth of mortality
+
+.small[
+
+&gt; *It is believed that exponential growth of mortality with age (Gompertz law) is followed by a period of deceleration, with slower rates of mortality increase at older ages.*
+
+&gt; *Recent studies found that the exponential increase of the mortality risk with age (the famous Gompertz law) continues even at extreme old ages in humans, rats, and mice, thus challenging traditional views about old-age mortality deceleration, mortality leveling-off, and late-life mortality plateaus.* 
+
+]
+
+.small[
+Gavrilova &amp; Gavrilov (2015), *Journals of Gerontology: Biological Sciences*
+]
+???
+
+The Gompertz–Makeham model is extremely popular in demography and fits well the distribution of lifetimes at lower levels, until 102-105.
+
+---
+
+# Theory of senescence
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="figures/Pyrkov2021.png" alt="Figure 3 of Pyrkov et al. (2021), Nature Communications, doi:10.1038/s41467-021-23014-1." width="100%" /&gt;
+&lt;p class="caption"&gt;Figure 3 of Pyrkov et al. (2021), Nature Communications, doi:10.1038/s41467-021-23014-1.&lt;/p&gt;
+&lt;/div&gt;
+
+???
+
+In Japan, in 2016, 8167 male and 57 525 female were centenarian.
+- rate of 5.1 per 10K in 2015
+
+In Canada, 6116 female and 835 male
+- rate of 1.9 per 10K
+
+Between 1983 and 2009, a total of 
+- 12 supercentenarians died
+- 321 semisupercentenarians died
+in Quebec.
+
+- oldest living today: Soeur André (Lucile Randon, 118 years, 236 days);
+– oldest ever: Jeanne Calment (122 years, 164 days).
+
+---
+
+
+layout: false
+name: data
+class: center middle section-title section-title-1 
+
+.huge[Data quality]
+
+---
+
+layout: true
+class: title title-1
+
+---
+
+# Sampling 
+
+Information limited due to availability of historical records.
+
+- Validation is key
+   - necronyms
+   - record falsification
+   - mistakes in data registers
+
+- Most databases (e.g., *Gerontology Research Group*) include self-reported records.
+
+--
+
+.box-inv-1.medium[**Opportunity samples**]
+
+???
+
+Shigechio Izumi was excluded from records because he beared his dead brother name, so died age 105 rather than 120.
+
+In Japan, the first modern family registration system was established in 1872 (Jinshin-KOSEKI), amended in 1886 by the Family Registration Law, Chapter 10 of Exceptional Lifespan.
+
+Italy: example of teenager reportedly borned in 1800s, who died age 13 but was initially recorded to have died 113.
+
+---
+
+# Jeanne Calment, the controversy
+
+&lt;img src="figures/JeanneCalment2.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+???
+
+Nikolai Zak (conspiracy?) theory in Rejuvenation Research that Yvonne Calment took the place of her mother Jeanne to avoid inheritance taxes.
+---
+
+# International Database on Longevity
+
+To draw reliable conclusions, we need .color-1[**representative samples**].
+
+- .section-title-1[**validated supercentenarian (110+)**]  from 13 countries
+
+--
+
+- plus (partly validated) .section-title-1[** semi-supercentenarian (105-109)**] for 9 countries
+
+--
+
+- Age-ascertainement bias-free
+
+--
+
+.box-inv-1[1081 validated supercentenarians]
+
+???
+
+- Nearly 50% of the records fail the validation check.
+- Random sample validated for semi-supercentenarians in France
+
+
+
+---
+
+# Sampling mechanisms
+
+Data are obtained by .section-title-1[**casting a net**] on the population of potential (semi)-supercentenarians.
+
+--
+
+- for IDL, (only) supercentenarians in a country .color-1[**who died**] between dates `\(c_1\)` and `\(c_2\)`.
+
+--
+
+- records for the candidates are then individually validated.
+
+---
+
+# Lexis diagram for interval truncation
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="Dalhousie22_Belzile_files/figure-html/lexisdiag-1.png" alt="Lexis diagrams showing the selection mechanism." width="82%" /&gt;
+&lt;p class="caption"&gt;Lexis diagrams showing the selection mechanism.&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+# More complex truncation schemes!
+
+Semisupercentenarians (105-109) who died in window `\((d_1, d_2)\neq (c_1, c_2)\)`.
+
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="Dalhousie22_Belzile_files/figure-html/lexisdiag3-1.png" alt="Lexis diagrams for IDL data with semisupercentenarian and supercentenarians" width="85%" /&gt;
+&lt;p class="caption"&gt;Lexis diagrams for IDL data with semisupercentenarian and supercentenarians&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+# Lexis diagram for Italian data
+
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="Dalhousie22_Belzile_files/figure-html/lexisdiag2-1.png" alt="Lexis diagrams for Istat data with semisupercentenarian and supercentenarians" width="45%" /&gt;
+&lt;p class="caption"&gt;Lexis diagrams for Istat data with semisupercentenarian and supercentenarians&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+
+# Truncation can be hidden
+
+- .section-title-1[ **Extinct cohort method** ]: Birth cohorts for which no death has been reported for X consecutive years.
+- counts cross-tabulated by years of birth, age and gender.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="figures/Sibuya_tabular.png" alt="Annual Vital Statistics Report of Japan (Hanamaya &amp;amp; Sibuya, 2014)." width="56%" /&gt;
+&lt;p class="caption"&gt;Annual Vital Statistics Report of Japan (Hanamaya &amp; Sibuya, 2014).&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+# Why does it matter?
+
+.small[
+
+Ignoring truncation leads to  .section-title-1[**underestimation**] of the survival probability: population increase and reduction in mortality at lower age translates into larger impact for later birth cohorts.
+
+]
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="Dalhousie22_Belzile_files/figure-html/artefacts_truncation-1.png" alt="Impact of truncation on quantile-quantile plots (left) and maximum age by birth year (right)." width="65%" /&gt;
+&lt;p class="caption"&gt;Impact of truncation on quantile-quantile plots (left) and maximum age by birth year (right).&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+# Incorrect conclusions
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="figures/Dong2016.png" alt="Failing to account for truncation and increase in population." width="85%" /&gt;
+&lt;p class="caption"&gt;Failing to account for truncation and increase in population.&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+layout: false
+name: models
+class: center middle section-title section-title-2
+
+.huge[Models]
+
+---
+
+layout: true
+class: title title-2
+
+---
+
+# Survival analysis
+
+Denote the lifetime `\(T\)`, a continuous random variable with distribution `\(F\)`, density `\(f\)`, lifespan `\(t_{F}= \sup\{t: F(t) &lt; 1\}\)` and survivor and hazard functions
+
+`$$\begin{align*}
+ S(t) &amp;= \Pr(T&gt;t) =1-F(t), 
+\\h(t) &amp;= \frac{f(t)}{S(t)}, \quad t&gt;0.
+\end{align*}$$`
+
+---
+
+# Poisson process
+
+- Suppose individuals independently reach age `\(u_0\)` at calendar time `\(x\)` at rate `\(\nu(x)\)`, and subsequently die at age `\(t+u_0\)` with density `\(f\)`.
+- Events in `\(\mathcal{C} = [c_1 , c_2] \times [u_0, \infty)\)` follow a Poisson process of rate
+`$$\begin{align*}
+\lambda(c, t) = \nu(c − t)f(t), \qquad
+c \in \mathbb{R}, t &gt; 0
+\end{align*}$$`
+at calendar time `\(c\)` and excess lifetime `\(t\)`.
+
+---
+
+# Poisson process
+
+- The lifetime density for dying in `\(\mathcal{C}\)` is
+`$$\begin{align*}
+f_{\mathcal{C}}(t) \propto f(t)w_{\mathcal{C}}(t), \quad w_{\mathcal{C}}(t) = \int_{c_1 - t}^{c_2-t} \nu(x) \mathrm{d}x, \quad t&gt;0
+\end{align*}$$`
+where `\(w_{\mathcal{C}}\)` is decreasing, so `\(f_{\mathcal{C}}\)` is .color-2[**stochastically smaller**] than `\(f\)`.
+
+
+
+---
+
+# Likelihood contributions
+
+The likelihood depends on `\(\nu\)`, hence consider the conditional likelihood
+`$$\begin{align*}
+\frac{f(t)}{F(b)-F(a)}, \quad a &lt; t&lt; b
+\end{align*}$$`
+for interval truncated data and, for left-truncated and right-censored data,
+`$$\begin{align*}
+\frac{h(t)^\delta S(t)}{1-F(a)}, \quad t&gt; a,
+\end{align*}$$`
+where `\([a, b] = [\max\{0, c_1 − x\}, c_2 − x]\)`.
+
+---
+
+# Models
+
+Many models popular in demography, many with infinite endpoint.
+
+- exponential: `\(h(t) = \sigma^{-1}\)` for `\(\sigma&gt;0\)`.
+- Gompertz–Makeham (1825, 1860): `$$h(t) = \lambda + \sigma^{-1}\exp(\beta t/\sigma), \qquad \beta, \sigma&gt;0, \lambda \geq 0.$$`
+- Logistic (Thatcher, 1999): 
+`$$h(t) = \lambda + \frac{A\exp(\beta t/ \sigma)}{1+B\exp(\beta t/ \sigma)}, \qquad A&gt;0, B \ge 0.$$`
+
+---
+
+# Generalized Pareto distribution
+
+Most records include only lifetime above `\(u_0\)` (.color-2[**threshold exceedances**])
+
+If a scaling function `\(a_u\)` exists such
+that `\((X − u)/a_u\)` has a non-degenerate distribution conditional on `\(X &gt; u\)`, then (Pickands, 1975)
+`$$\frac{\Pr\{(X-u)/a_u &gt; t\}}{\Pr(X &gt;u)} \to 
+\begin{cases}
+(1+\xi t/\sigma)_{+}^{-1/\xi}, &amp; \xi \neq 0\\
+\exp(-t/\sigma), &amp; \xi = 0.
+\end{cases}$$`
+where `\(c_+ = \max\{c, 0\}\)` for a real number `\(c\)`.
+
+The .color-2[**unique nondegenerate**] limiting distribution for exceedances of a threshold `\(u\)` is .section-title-2[**generalized Pareto**].
+
+---
+
+# Penultimate approximation
+
+
+At lower levels, the behaviour of the fitted model depends on the reciprocal hazard, `\(r(t) = 1/h(t)\)`; under mild regularity conditions,
+
+`$$\xi = \lim_{t \to t_{F}} r'(t)$$`
+and a pre-asymptotic shape is `\(\xi_u = r'(u)\)`.
+
+.small[
+For example, the Gompertz model has `\(\xi_u \nearrow 0\)`: estimates of `\(\xi\)` tend to be negative.
+]
+
+???
+
+The speed of convergence is quite fast, so we would expect the exceedances to be well approximated by an exponential distribution.
+
+---
+
+# Threshold stability
+
+A key property of the generalized Pareto distribution is **threshold stability**.
+
+- can extrapolate behaviour of `\(F\)` at higher levels
+- useful for choosing `\(u\)` in applications
+   - fit model at multiple threshold `\(u_1 &lt; \cdots &lt; u_k\)`.
+   - check whether shape `\(\xi\)` agrees over range.
+
+---
+
+
+# Lack of (threshold) stability
+
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="Dalhousie22_Belzile_files/figure-html/thstab-1.png" alt="Threshold stability plots for France and Italy (left), and Netherlands (right)." width="60%" /&gt;
+&lt;p class="caption"&gt;Threshold stability plots for France and Italy (left), and Netherlands (right).&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+# How good is the approximation?
+
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="Dalhousie22_Belzile_files/figure-html/qqplot_italian-1.png" alt="Quantile-quantile plots with 95% pointwise and simultaneous bands (left) and conditional cumulative hazard (right) for Istat." width="75%" /&gt;
+&lt;p class="caption"&gt;Quantile-quantile plots with 95% pointwise and simultaneous bands (left) and conditional cumulative hazard (right) for Istat.&lt;/p&gt;
+&lt;/div&gt;
+
+???
+
+Bootstrap estimates obtained by conditioning on truncation time and birth dates. New observations simulated from doubly truncated distributions
+
+---
+
+# Accounting for interval truncation
+
+
+The plotting position for `\(x\)`-axis of Q-Q plot for observation `\(y_i\)` is
+$$
+F_0^{-1}\left[F_0(a_i) +\left\\{ F_0(b_i)-F_0(a_i) \right\\} \frac{F_n(y_i) - F_n(a_i)}{F_n(b_i)-F_n(a_i)}\right]
+$$
+where
+- `\(F_0\)` is the postulated (i.e., fitted) parametric distribution,
+- `\(F_0^{-1}\)` is the corresponding quantile function,
+- `\(F_n\)` is the NPMLE of the distribution function (Turnbull, 1976).
+
+Censored observations not displayed.
+
+---
+# Flexibility is key
+
+We fit a semiparametric hazard function `$$h(t) = \{\sigma + \xi t + g(t)\}^{-1}_{+}$$` with `\(g(t) \to 0\)` as `\(t \to t_{F}\)` with `\(g(t)\)` a cubic regression spline
+- generalizes generalized Pareto model
+- reduces to parametric model in upper tail
+- equispaced knots
+
+???
+
+Left: figure obtained with bshazard for left-truncated right-censored data
+Right: discretize data into daily bins, use cumulative hazard H(t) = sum_{z=1}^t h(z)/365 for interpretability, so survival function is exp(-H(x))
+---
+# Let the tail speak for itself!
+
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="Dalhousie22_Belzile_files/figure-html/splines_italian-1.png" alt="Nonparametric hazard (left) and semiparametric generalized Pareto (right)." width="75%" /&gt;
+&lt;p class="caption"&gt;Nonparametric hazard (left) and semiparametric generalized Pareto (right).&lt;/p&gt;
+&lt;/div&gt;
+
+.tiny[Semiparametric estimator suggest a wide range of plausible behaviour, including constant risk.]
+---
+
+# Take home messages
+
+
+.box-inv-2.sp-after[cannot use low thresholds&lt;br&gt; for extrapolation.]
+
+--
+
+.box-inv-2.sp-after[goodness-of-fit diagnostics suggest&lt;br&gt; generalized Pareto model fits well.]
+
+--
+
+.box-inv-2.sp-after[hazard doesn't stabilize&lt;br&gt;until about 108 years.]
+
+--
+
+.box-inv-2.sp-after[shape estimates suggest&lt;br&gt;a **decrease** of the risk above.]
+
+---
+# Is there a finite lifespan?
+
+Mathematically speaking, is `\(t_F=\sup\{t: F(t)&lt;1\} = \infty\)`?
+
+
+Hard to convey to the average reader:
+- `\(t_F=\infty\)` does not imply immortality.
+- `\(\Pr(T &gt; u) &lt; \varepsilon\)` does not imply finite lifespan `\(t_F &lt; u\)`.
+
+
+
+--
+
+.box-inv-2[the answer may be in the model.]
+
+
+- Gompertz–Makeham has no right endpoint  and `\(t_F =\infty\)`.
+- exponential model has a constant hazard (.color-2[**plateau of mortality**]).
+- the generalized Pareto implies a lifespan of `\(u-\sigma/\xi\)` if `\(\xi &lt; 0\)`.
+
+---
+
+
+
+layout: false
+name: extrapolation
+class: center middle section-title section-title-3
+
+.huge.color-0[Extrapolation]
+
+---
+
+layout: true
+class: title title-3
+
+---
+
+# Is the lifetime distribution bounded?
+
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="Dalhousie22_Belzile_files/figure-html/profile_lifetime-1.png" alt="Profile likelihood for endpoint for various countries and three thresholds." width="55%" /&gt;
+&lt;p class="caption"&gt;Profile likelihood for endpoint for various countries and three thresholds.&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+# Human lifespan
+
+No discernible differences between
+
+- earlier and later birth cohorts,
+- countries,
+- men and women, except that after age 108 French men have lower survival.
+
+Not to be confused with gender inbalance due to lower survival of men.
+---
+
+# You have no power in here!
+
+The power of a likelihood ratio test for detecting a finite endpoint (obtained by simulating records with a generalized Pareto distribution with lifespan `\(t_F\)`) is high: based on France/Italy/IDL data (2016 version),
+
+- 125 years: combined power of 97%;
+- 130 years: combined power of 83%;
+- 135 years: combined power of 66%.
+
+Suggests that the human lifespan lies well beyond any lifetime yet observed.
+
+---
+
+
+# Huge uncertainty
+
+Japanese (unvalidated) data are interval-censored and right-truncated
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="Dalhousie22_Belzile_files/figure-html/japanese-1.png" alt="Posterior credible intervals by threshold (left) and sampling distribution with(out) rounding (right)." width="65%" /&gt;
+&lt;p class="caption"&gt;Posterior credible intervals by threshold (left) and sampling distribution with(out) rounding (right).&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+# Supercentenarians [don't] live forever...
+
+Estimated exponential distribution above 110 years for IDL has mean 0.5 (0.46, 0.53): a coin toss.
+
+--
+
+Surviving until 130 years conditional on surviving until 110 years
+- is equivalent to obtaining 20 heads in a row,
+- a less than one-in-a-million chance...
+
+--
+
+Anticipated increase in number of supercentenarians make it possible to observe 130, but higher record is highly unlikely (Pearce &amp; Raftery 2021).
+
+---
+
+# References
+
+- Léo R. Belzile, Anthony C. Davison, Jutta Gampe, Holger Rootzén and Dmitrii Zholud (2022). Is there a cap on longevity? A statistical review., Annual Reviews of Statistics and its Applications, 9, 21–45, [`doi:10.1146/annurev-statistics-040120-025426`](https://doi.org/10.1146/annurev-statistics-040120-025426).
+- Léo R. Belzile and Anthony C. Davison (2020). Improved inference for risk measures of univariate extremes (2022), Annals of Applied Statistics, 16(3): 1524–1549, [`doi: 10.1214/21-AOAS1555`](https://doi.org/10.1214/21-AOAS1555)
+- Léo R. Belzile, Anthony C. Davison, Holger Rootzén and Dmitrii Zholud (2021). Human mortality at extreme age., Royal Society Open Science, 8, [`doi:10.1098/rsos.202097`](https://doi.org/10.1098/rsos.202097).
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"navigation": {
+"scroll": true
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
